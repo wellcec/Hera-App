@@ -2,7 +2,6 @@ import { useCallback } from 'react'
 import { isEmpty, truncate } from 'lodash'
 import moment from 'moment'
 
-/* Defining the location 'pt-br' required when using the moment. */
 import 'moment/locale/pt-br'
 
 moment.locale('pt-br')

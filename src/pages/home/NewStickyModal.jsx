@@ -70,9 +70,9 @@ const DEFAULT_STICKY = {
 
 const NewStickyModal = ({ onSuccess }) => {
   const classes = useStyles()
-  const stickyClient = useStickyClient()
-  const { formatDate, date, formatHours } = useUtils()
+  const { date } = useUtils()
   const { setAlert } = useConfig()
+  const stickyClient = useStickyClient()
 
   const [open, setOpen] = useState(false)
 

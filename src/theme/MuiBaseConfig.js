@@ -2,7 +2,7 @@ import typography from './typography'
 import { buttonStyle, buttonPrimaryStyle } from './MuiButton'
 import MuiPaper from './MuiPaper'
 
-export default {
+const MuiBaseConfig = {
   direction: 'ltr',
   sizes: {
     header: 80,
@@ -64,3 +64,5 @@ export default {
     },
   },
 }
+
+export default MuiBaseConfig
