@@ -47,11 +47,11 @@ const Sticky = ({ sticky }) => {
   const classes = useStyles()
   const { date, formatHours, formatTruncate } = useUtils()
 
-  const getDay = (value) => {
-    const day = date(value).date()
-    if (day.toString().length === 1) return `0${day}`
-    return day
-  }
+  // const getDay = (value) => {
+  //   const day = date(value).date()
+  //   if (day.toString().length === 1) return `0${day}`
+  //   return day
+  // }
 
   const getHour = (value) => {
     return formatHours(value)

@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 const font = ['Poppins', 'sans-serif'].join(',')
 
 const textStyle = {

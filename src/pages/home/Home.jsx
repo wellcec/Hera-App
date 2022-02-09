@@ -41,14 +41,14 @@ const Home = () => {
   const stickyClient = useStickyClient()
 
   const [stickies, setStickies] = useState([])
-  const [total, setTotal] = useState(0)
+  // const [total, setTotal] = useState(0)
 
   const getStickies = useCallback(() => {
     setLoading(true)
     stickyClient().getStickies().then((response) => {
       console.log('stickies', response.data)
       setStickies(response.data)
-      setTotal(response.data.length)
+      // setTotal(response.data.length)
       setLoading(false)
     }, (response) => {
       setLoading(false)
