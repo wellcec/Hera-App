@@ -15,6 +15,8 @@ import Alerts from './components/Alerts'
 import Loading from './layout/loading/Circle'
 import LoginScreen from './layout/LoginScreen'
 
+import Congrats from './pages/congrats/Congrats'
+
 import useUserClient from './clients/UserClient'
 
 const App = () => {
@@ -75,8 +77,9 @@ const App = () => {
               {auth && (
                 <Header />
               )}
+              
               <Switch>
-                <Route exact path='/'>
+                {/* <Route exact path='/'>
                   {auth && (
                     <Home />
                   )}
@@ -84,6 +87,10 @@ const App = () => {
                   {!auth && (
                     <LoginScreen />
                   )}
+                </Route> */}
+
+                <Route exact path='/'>
+                  <Congrats />
                 </Route>
               </Switch>
             </Router>
