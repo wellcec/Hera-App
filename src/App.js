@@ -10,10 +10,10 @@ import { createTheme } from './theme'
 import { DEFAULT_ALERT } from './constants'
 
 import Header from './layout/Header'
-import Home from './pages/home/Home'
+// import Home from './pages/home/Home'
 import Alerts from './components/Alerts'
 import Loading from './layout/loading/Circle'
-import LoginScreen from './layout/LoginScreen'
+// import LoginScreen from './layout/LoginScreen'
 
 import Congrats from './pages/congrats/Congrats'
 
