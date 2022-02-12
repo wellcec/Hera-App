@@ -52,7 +52,6 @@ const useStyles = makeStyles(() => ({
 
 const Congrats = () => {
   const classes = useStyles()
-  const height = window.innerHeight
 
   const [appearBox, setAppearBox] = useState(false)
   const [appearFinishBox, setAppearFinishBox] = useState(false)
