@@ -35,3 +35,25 @@ img {
   0% {opacity:0;}
   100% {opacity:1;}
 }
+
+.shake {
+  animation: shake .75s infinite;
+}
+
+@keyframes shake {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(10px, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.height100 {
+  height: 100%;
+}

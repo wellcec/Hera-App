@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 import React, { useState, useEffect } from 'react'
 import clsx from 'clsx'
 import { Box, makeStyles, Typography, IconButton } from '@material-ui/core'
@@ -27,6 +28,12 @@ const useStyles = makeStyles(() => ({
   colorDefault: {
     color: '#fff',
   },
+  backgroundColorDefault: {
+    background: '#fff',
+    '&:hover': {
+      background: 'rgb(194 192 205 / 67%)',
+    },
+  },
   boxMain: {
     backdropFilter: 'blur(2px) saturate(180%)',
     '-webkit-backdrop-filter': 'blur(2px) saturate(180%)',
@@ -45,9 +52,11 @@ const useStyles = makeStyles(() => ({
 
 const Congrats = () => {
   const classes = useStyles()
+  const height = window.innerHeight
 
   const [appearBox, setAppearBox] = useState(false)
   const [appearFinishBox, setAppearFinishBox] = useState(false)
+  const [title, setTitle] = useState(true)
   const [second, setSecondStep] = useState(false)
   const [third, setThirdStep] = useState(false)
   const [fourth, setFourthStep] = useState(false)
@@ -77,7 +86,9 @@ const Congrats = () => {
   useEffect(() => {
     const initial = () => delay(() => setAppearBox(true), 2000)
 
-    const secondStep = () => delay(() => setSecondStep(true), 3000)
+    const secondStep = () => delay(() => {
+      setSecondStep(true)
+    }, 3000)
 
     const thirdStep = () => delay(() => {
       setThirdStep(true)
@@ -127,14 +138,14 @@ const Congrats = () => {
               </Typography>
             </Box>
 
-            <Box mt={3}>
-              {countCorrect < 3 && (
+            <Box mt={3} textAlign="center">
+              {countCorrect < countWrong && (
                 <Typography className={clsx(classes.colorDefault, classes.congratsText)}>
                   Você foi mais no botão vermelho kkkkkk volta lá que tem mais coisa boa pra você
                 </Typography>
               )}
 
-              {countWrong < 3 && (
+              {countWrong < countCorrect && (
                 <Typography className={clsx(classes.colorDefault, classes.congratsText)}>
                   Você foi mais no botão verde kkkkkk volta lá que tem mais umas zoeirinhas pra você
                 </Typography>
@@ -142,7 +153,7 @@ const Congrats = () => {
             </Box>
 
             <Box mt={2}>
-              <IconButton size='medium' onClick={() => window.location.reload()}>
+              <IconButton size='medium' onClick={() => window.location.reload()} className={classes.backgroundColorDefault}>
                 <ArrowBack color='primary' />
               </IconButton>
             </Box>
@@ -151,7 +162,7 @@ const Congrats = () => {
       )}
 
       {appearBox && (
-        <Box height={1} display="flex" justifyContent="center" alignItems="center" className="fadeIn">
+        <Box display="flex" justifyContent="center" alignItems="center" className={`fadeIn ${height < 720? '' : 'height100'}`}>
           <Box
             m={2}
             px={3}
@@ -163,11 +174,13 @@ const Congrats = () => {
             justifyContent="center"
             className={classes.boxMain}
           >
-            <Box>
-              <Typography className={clsx(classes.colorDefault, classes.congratsText)}>
-                Eai meu consagrado Jadyson!
-              </Typography>
-            </Box>
+            {title && (
+              <Box>
+                <Typography className={clsx(classes.colorDefault, classes.congratsText)}>
+                  Eai meu consagrado Jadyson!
+                </Typography>
+              </Box>
+            )}
 
             {second && (
               <Box mt={5} className="fadeIn">
@@ -183,7 +196,7 @@ const Congrats = () => {
                   Achou que eu tinha esquecido né
                 </Typography>
 
-                <Box mt={12} className="fadeIn">
+                <Box mt={12} className="fadeIn" display="flex" justifyContent="center">
                   <ArrowDown onClick={() => {
                     setFourthStep(true)
                     setThirdStep(false)
@@ -193,7 +206,7 @@ const Congrats = () => {
             )}
 
             {fourth && (
-              <Box mt={4} className="fadeIn">
+              <Box mt={4} className="fadeIn" textAlign="center">
                 <Typography className={clsx(classes.colorDefault, classes.congratsText)}>
                   Esqueci mesmo rsrs mas vai clicando aí que quero te mostrar umas coisas.
                 </Typography>
@@ -208,6 +221,7 @@ const Congrats = () => {
                   <Box mx={2}>
                     <ArrowDown color="green" onClick={() => {
                       setCountCorrect((current) => current + 1)
+                      setTitle(false)
                       setFiveCorrectStep(true)
                       setFourthStep(false)
                     }} />
@@ -216,6 +230,7 @@ const Congrats = () => {
                   <Box mx={2}>
                     <ArrowDown color="red" onClick={() => {
                       setCountWrong((current) => current + 1)
+                      setTitle(false)
                       setFiveWrongStep(true)
                       setFourthStep(false)
                     }} />
@@ -225,7 +240,7 @@ const Congrats = () => {
             )}
 
             {fiveCorrect && (
-              <Box mt={4} className="fadeIn">
+              <Box className="fadeIn" textAlign="center">
                 <Typography className={clsx(classes.colorDefault, classes.congratsText)}>
                   Um cara que aceita minhas congratulações 2 anos atrasado sem me xingar 😍
                 </Typography>
@@ -259,7 +274,7 @@ const Congrats = () => {
             )}
 
             {fiveWrong && (
-              <Box mt={4} className="fadeIn">
+              <Box className="fadeIn" textAlign="center">
                 <Typography className={clsx(classes.colorDefault, classes.congratsText)}>
                   Apenas um cara bêbado (ou é naturalmente assim)
                 </Typography>
@@ -295,7 +310,7 @@ const Congrats = () => {
             )}
 
             {sixCorrect && (
-              <Box mt={4} className="fadeIn">
+              <Box className="fadeIn" textAlign="center">
                 <Typography className={clsx(classes.colorDefault, classes.congratsText)}>
                   Um cara que sempre trata as pessoas da melhor maneira possível, inclusive eu ❤
                 </Typography>
@@ -323,7 +338,7 @@ const Congrats = () => {
             )}
 
             {sixWrong && (
-              <Box mt={4} className="fadeIn">
+              <Box className="fadeIn" textAlign="center">
                 <Typography className={clsx(classes.colorDefault, classes.congratsText)}>
                   Já teve esse dente de nerdola de 8 anos que joga Free Fire
                 </Typography>
@@ -355,7 +370,7 @@ const Congrats = () => {
             )}
 
             {sevenCorrect && (
-              <Box mt={4} className="fadeIn">
+              <Box className="fadeIn" textAlign="center">
                 <Typography className={clsx(classes.colorDefault, classes.congratsText)}>
                   Ama os animais (É amigo de Gabriele e Izabela) 🐎
                 </Typography>
@@ -383,7 +398,7 @@ const Congrats = () => {
             )}
 
             {sevenWrong && (
-              <Box mt={4} className="fadeIn">
+              <Box className="fadeIn" textAlign="center">
                 <Typography className={clsx(classes.colorDefault, classes.congratsText)}>
                   Mas depois do aparelho ficou sensual 😎
                 </Typography>
@@ -415,7 +430,7 @@ const Congrats = () => {
             )}
 
             {eightCorrect && (
-              <Box mt={4} className="fadeIn">
+              <Box className="fadeIn" textAlign="center">
                 <Typography className={clsx(classes.colorDefault, classes.congratsText)}>
                   Se importa com seus amigos mesmo passando um longo tempo sem se falar, e isso diz
                   muito sobre o seu caráter. 💖
@@ -444,7 +459,7 @@ const Congrats = () => {
             )}
 
             {eightWrong && (
-              <Box mt={4} className="fadeIn">
+              <Box className="fadeIn" textAlign="center">
                 <Typography className={clsx(classes.colorDefault, classes.congratsText)}>
                   Procurei Jadyson no insta e isso que encontrei, pela foto é o verdadeiro.
                 </Typography>
@@ -476,7 +491,7 @@ const Congrats = () => {
             )}
 
             {nineCorrect && (
-              <Box mt={4} className="fadeIn">
+              <Box className="fadeIn" textAlign="center">
                 <Typography className={clsx(classes.colorDefault, classes.congratsText)}>
                   Me deu pulseiras de presente que guardo até hoje e sempre vou guardar ✌
                 </Typography>
@@ -506,7 +521,7 @@ const Congrats = () => {
             )}
 
             {nineWrong && (
-              <Box mt={4} className="fadeIn">
+              <Box className="fadeIn" textAlign="center">
                 <Typography className={clsx(classes.colorDefault, classes.congratsText)}>
                   Não consegui identificar o que quis dizer com esse gesto 😂
                 </Typography>
