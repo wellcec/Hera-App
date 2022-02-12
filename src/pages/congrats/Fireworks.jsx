@@ -3,9 +3,11 @@ import './fireworks.scss'
 
 const Fireworks = () => {
   return (
-    <div className="pyro">
-      <div className="before"></div>
-      <div className="after"></div>
+    <div className="main">
+      <div className="pyro">
+        <div className="before"></div>
+        <div className="after"></div>
+      </div>
     </div>
   )
 }

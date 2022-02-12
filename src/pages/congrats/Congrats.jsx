@@ -112,7 +112,9 @@ const Congrats = () => {
 
   return (
     <>
-      <Fireworks />
+      {(title || appearFinishBox) && (
+        <Fireworks />
+      )}
 
       {appearFinishBox && (
         <Box height={1} display="flex" justifyContent="center" alignItems="center" className="fadeIn">
@@ -139,13 +141,13 @@ const Congrats = () => {
             </Box>
 
             <Box mt={3} textAlign="center">
-              {countCorrect < countWrong && (
+              {countCorrect < countWrong + 1 && (
                 <Typography className={clsx(classes.colorDefault, classes.congratsText)}>
                   Você foi mais no botão vermelho kkkkkk volta lá que tem mais coisa boa pra você
                 </Typography>
               )}
 
-              {countWrong < countCorrect && (
+              {countWrong < countCorrect + 1 && (
                 <Typography className={clsx(classes.colorDefault, classes.congratsText)}>
                   Você foi mais no botão verde kkkkkk volta lá que tem mais umas zoeirinhas pra você
                 </Typography>

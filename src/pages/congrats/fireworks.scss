@@ -66,6 +66,12 @@ $box-shadow2: ();
     -ms-transform: $settings;
 }
 
+.main {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
 .pyro > .before, .pyro > .after {
   position: absolute;
   width: 5px;
