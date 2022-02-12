@@ -128,7 +128,7 @@ const Congrats = () => {
             justifyContent="center"
             className={classes.boxMain}
           >
-            <Box>
+            <Box textAlign="center">
               <Typography className={clsx(classes.colorDefault, classes.finishText)}>
                 Parabéns mano 🎉✨🎁
               </Typography>
@@ -164,7 +164,7 @@ const Congrats = () => {
       )}
 
       {appearBox && (
-        <Box display="flex" justifyContent="center" alignItems="center" className={`fadeIn ${height < 720? '' : 'height100'}`}>
+        <Box display="flex" justifyContent="center" alignItems="center" className={`fadeIn`}>
           <Box
             m={2}
             px={3}
@@ -193,7 +193,7 @@ const Congrats = () => {
             )}
 
             {third && (
-              <Box mt={4} className="fadeIn">
+              <Box mt={4} className="fadeIn" textAlign="center">
                 <Typography className={clsx(classes.colorDefault, classes.congratsText)}>
                   Achou que eu tinha esquecido né
                 </Typography>
